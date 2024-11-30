@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SetupTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected String BASE_URL = "https://site-test-selenium.vercel.app/";
 
     @BeforeEach
     public void setUp() {
