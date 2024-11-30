@@ -14,8 +14,8 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SetupTest {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
     @BeforeEach
     public void setUp() {
