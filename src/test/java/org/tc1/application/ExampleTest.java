@@ -21,7 +21,6 @@ public class ExampleTest extends SetupTest {
         // verifying content :)
         assertEquals("Hospital Digital", header.getText(), "The H1 heading text is incorrect.");
     }
-
 }
 
 
