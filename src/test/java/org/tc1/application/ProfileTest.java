@@ -49,6 +49,12 @@ public class ProfileTest extends SetupTest {
                         null,
                         null,
                         false
+                ),
+                Arguments.of(
+                        "nome",
+                        null,
+                        "222222-11-12",
+                        false
                 )
         );
     }
