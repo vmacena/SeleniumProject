@@ -102,6 +102,18 @@ public class SignUpTest extends SetupTest {
                         "123",
                         "456",
                         true
+                ),
+                Arguments.of(
+                        faker.name().firstName(),
+                        faker.internet().emailAddress(),
+                        faker.number().numberBetween(1, 2),
+                        dateFormat.format(faker.date().birthday(800, 920)),
+                        1,
+                        String.valueOf(faker.number().numberBetween(10000, 999999)),
+                        faker.number().numberBetween(1, 3),
+                        "123",
+                        "123",
+                        true
                 )
         );
     }
