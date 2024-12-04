@@ -2,7 +2,11 @@ package org.tc1.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.tc1.utils.Utils;
+
+import java.time.Duration;
 
 public class SignInPage {
     private WebDriver driver;
@@ -39,5 +43,13 @@ public class SignInPage {
         Utils.waitForFieldToBeEditable(driver, loginButton, 3);
         
         return Utils.verifyIsDisplayed(driver, loginModal, 2);
+    }
+
+    public void waitForUrlChange() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+            wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe("https://site-test-selenium.vercel.app/")));
+        } catch (Exception ignored) {
+        }
     }
 }
