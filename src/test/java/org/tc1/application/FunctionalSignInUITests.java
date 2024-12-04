@@ -59,4 +59,11 @@ public class FunctionalSignInUITests extends SetupTest {
         assertTrue(driver.findElement(passwordInput).isDisplayed(),
                 "The password field is not visible.");
     }
+
+    @Test
+    @DisplayName("Verify Cancel Button Visibility")
+    public void testCancelButtonVisibility() {
+        assertTrue(driver.findElement(cancelButton).isDisplayed(),
+                "The cancel button is not visible.");
+    }
 }
