@@ -9,7 +9,7 @@ import org.tc1.setup.MobileSetupTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ResponsiveModalTests extends MobileSetupTest {
+public class VisualResponsiveModalTest extends MobileSetupTest {
     private By loginModalButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[1]");
     private By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
     private By loginModal = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form");

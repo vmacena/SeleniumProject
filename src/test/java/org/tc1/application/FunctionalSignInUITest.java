@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class FunctionalSignInUITests extends SetupTest {
+public class FunctionalSignInUITest extends SetupTest {
     private By loginModalButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[1]");
     private By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
     private By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
