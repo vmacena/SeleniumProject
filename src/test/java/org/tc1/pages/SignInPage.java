@@ -11,11 +11,11 @@ public class SignInPage {
         this.driver = driver;
     }
 
-    private By loginModalButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[1]");
-    private By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
-    private By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
-    private By loginButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
-    private By cancelButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[1]");
+    private final By loginModalButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[1]");
+    private final By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
+    private final By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
+    private final By loginButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
+    private final By cancelButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[1]");
 
     public void clickLogInModalButton() {
         Utils.clickElement(driver, loginModalButton);

@@ -11,19 +11,19 @@ public class SignUpPage {
         this.driver = driver;
     }
 
-    private By formModal = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div");
-    private By signupButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[2]");
-    private By nameInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
-    private By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
-    private By sexoSelect = By.xpath("//*[@id=\"sexo\"]");
-    private By birthdateInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[4]/input");
-    private By typeSelect = By.xpath("//*[@id=\"user_type\"]");
-    private By criInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[6]/input");
-    private By specialitySelect = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[7]/select");
-    private By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[8]/input");
-    private By confirmPasswordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[9]/input");
-    private By submitButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
-    private By cancelButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[1]");
+    private final By formModal = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div");
+    private final By signupButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[2]");
+    private final By nameInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
+    private final By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
+    private final By sexoSelect = By.xpath("//*[@id=\"sexo\"]");
+    private final By birthdateInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[4]/input");
+    private final By typeSelect = By.xpath("//*[@id=\"user_type\"]");
+    private final By criInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[6]/input");
+    private final By specialitySelect = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[7]/select");
+    private final By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[8]/input");
+    private final By confirmPasswordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[9]/input");
+    private final By submitButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
+    private final By cancelButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[1]");
 
     public void clickSignUpButton() {
         Utils.clickElement(driver, signupButton);
