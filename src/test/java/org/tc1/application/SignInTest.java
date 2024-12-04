@@ -87,6 +87,7 @@ public class SignInTest extends SetupTest {
         
         var email1 = faker.internet().emailAddress();
         var password1 = "123";
+        var email2 = faker.internet().emailAddress();
 
         return Stream.of(
                 Arguments.of(
@@ -115,6 +116,20 @@ public class SignInTest extends SetupTest {
                         password1,
                         faker.internet().emailAddress(),
                         password1,
+                        false
+                ),
+                Arguments.of(
+                        faker.name().firstName(),
+                        email2,
+                        faker.number().numberBetween(1, 2),
+                        dateFormat.format(faker.date().birthday(18, 60)),
+                        1,
+                        String.valueOf(faker.number().numberBetween(10000, 999999)),
+                        faker.number().numberBetween(1, 3),
+                        password1,
+                        password1,
+                        email2,
+                        faker.rockBand().name(),
                         false
                 )
         );
