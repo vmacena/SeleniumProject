@@ -75,11 +75,7 @@ public class SignInTest extends SetupTest {
         signInPage.fillForm(loginEmail,loginPassword);
         signInPage.submitForm();
         
-        signInPage.waitForUrlChange();
-
-        var result = driver.getCurrentUrl();
-        
-        assertEquals(expected, result.equals( BASE_URL + "user"));
+        assertEquals(expected, signInPage.isUrlChanged());
     }
 
     private static Stream<Arguments> provideSignUpData() {

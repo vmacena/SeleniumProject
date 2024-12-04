@@ -45,11 +45,13 @@ public class SignInPage {
         return Utils.verifyIsDisplayed(driver, loginModal, 2);
     }
 
-    public void waitForUrlChange() {
+    public boolean isUrlChanged() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
             wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe("https://site-test-selenium.vercel.app/")));
+            return true;
         } catch (Exception ignored) {
+            return false;
         }
     }
 }
