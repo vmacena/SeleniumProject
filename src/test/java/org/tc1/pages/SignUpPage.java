@@ -2,6 +2,7 @@ package org.tc1.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.tc1.utils.Utils;
 
 public class SignUpPage {
     private WebDriver driver;
@@ -10,31 +11,43 @@ public class SignUpPage {
         this.driver = driver;
     }
 
-    private By name = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
-    private By email = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
-    private By sexo = By.xpath("//*[@id=\"sexo\"]");
-    private By birthdate = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[4]/input");
-    private By type = By.xpath("//*[@id=\"user_type\"]");
-    private By password = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[6]/input");
-    private By confirm_password = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[7]/input");
-    private By submit_button = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
-    private By cancel_button = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[1]");
+    private By signupButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[2]");
+    private By nameInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
+    private By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
+    private By sexoSelect = By.xpath("//*[@id=\"sexo\"]");
+    private By birthdateInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[4]/input");
+    private By typeSelect = By.xpath("//*[@id=\"user_type\"]");
+    private By criInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[6]/input");
+    private By specialitySelect = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[7]/select");
+    private By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[8]/input");
+    private By confirmPasswordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[9]/input");
+    private By submitButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
+    private By cancelButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[1]");
 
-    public void fillForm(String name, String email, String sexo, String birthdate, String type, String password, String confirm_password) {
-        driver.findElement(this.name).sendKeys(name);
-        driver.findElement(this.email).sendKeys(email);
-        driver.findElement(this.sexo).sendKeys(sexo);
-        driver.findElement(this.birthdate).sendKeys(birthdate);
-        driver.findElement(this.type).sendKeys(type);
-        driver.findElement(this.password).sendKeys(password);
-        driver.findElement(this.confirm_password).sendKeys(confirm_password);
+    public void clickSignUpButton() {
+        Utils.clickElement(driver, signupButton);
+    }
+
+    public void fillForm(String name, String email, int sexoIndex, String birthdate, int typeIndex, String cri, int specialityIndex, String password, String confirmPassword) {
+        Utils.fillInput(driver, nameInput, name);
+        Utils.fillInput(driver, emailInput, email);
+
+        Utils.selectByIndex(driver, sexoSelect, sexoIndex);
+        Utils.fillInput(driver, birthdateInput, birthdate);
+
+        Utils.selectByIndex(driver, typeSelect, typeIndex);
+        Utils.fillInput(driver, criInput, cri);
+
+        Utils.selectByIndex(driver, specialitySelect, specialityIndex);
+        Utils.fillInput(driver, passwordInput, password);
+        Utils.fillInput(driver, confirmPasswordInput, confirmPassword);
     }
 
     public void submitForm() {
-        driver.findElement(this.submit_button).click();
+        Utils.clickElement(driver, submitButton);
     }
 
     public void cancelForm() {
-        driver.findElement(this.cancel_button).click();
+        Utils.clickElement(driver, cancelButton);
     }
 }
