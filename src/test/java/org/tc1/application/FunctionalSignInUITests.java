@@ -31,4 +31,11 @@ public class FunctionalSignInUITests extends SetupTest {
         assertEquals(expectedTitle, actualTitle,
                 "The page title does not match what was expected.");
     }
+
+    @Test
+    @DisplayName("Verify Login Button Visibility")
+    public void testLoginButtonVisibility() {
+        assertTrue(driver.findElement(loginButton).isDisplayed(),
+                "The login button is not visible.");
+    }
 }
