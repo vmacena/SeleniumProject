@@ -49,9 +49,9 @@ public class SignInTest extends SetupTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideSignUpData")
-    @DisplayName("Should let you login if you register beforehand")
-    public void testSuccessfulLogin(
+    @MethodSource("provideSignInData")
+    @DisplayName("Testing login parameters with sign up")
+    public void testLogin(
             String name,
             String email,
             int sexoIndex,
@@ -78,7 +78,7 @@ public class SignInTest extends SetupTest {
         assertEquals(expected, signInPage.isUrlChanged());
     }
 
-    private static Stream<Arguments> provideSignUpData() {
+    private static Stream<Arguments> provideSignInData() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
         var email1 = faker.internet().emailAddress();
