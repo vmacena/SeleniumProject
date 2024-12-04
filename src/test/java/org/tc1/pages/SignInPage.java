@@ -29,7 +29,6 @@ public class SignInPage {
 
     public void submitForm() {
         Utils.clickElement(driver, loginButton);
-        Utils.waitForClickability(driver, loginButton, 4);
     }
 
     public void cancelForm() {
