@@ -2,10 +2,16 @@ package org.tc1.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.tc1.utils.Utils;
+
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import static org.tc1.utils.Utils.*;
 
 public class ProfilePage {
     private WebDriver driver;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 
     public ProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -20,24 +26,35 @@ public class ProfilePage {
     private final By restoreButton = By.xpath("//*[@id=\"root\"]/div/main/div/form/div/button[1]");
 
     public void clickUserButton() {
-        Utils.clickElement(driver, buttonUser);
+        clickElement(driver, buttonUser);
     }
 
     public String getNameUser() {
-        return Utils.getText(driver, nameUser);
+        return getText(driver, nameUser);
     }
 
     public void fillForm(String name, int sexoIndex, String birthdate) {
-        Utils.fillInput(driver, nameInput, name);
-        Utils.selectByIndex(driver, sexoSelect, sexoIndex);
-        Utils.fillInput(driver, birthdateInput, birthdate);
+        fillInput(driver, nameInput, name);
+        selectByIndex(driver, sexoSelect, sexoIndex);
+        fillInput(driver, birthdateInput, birthdate);
     }
 
     public void submitForm() {
-        Utils.clickElement(driver, submitButton);
+        clickElement(driver, submitButton);
     }
 
     public void restoreForm() {
-        Utils.clickElement(driver, restoreButton);
+        clickElement(driver, restoreButton);
+    }
+
+    public boolean compareFields(String name, int sexoIndex, String birthdate) {
+        String nameField = getInputValue(driver, nameInput);
+        List<String> sexoOptions = getSelecteOptions(driver, sexoSelect);
+        String sexoValue = sexoOptions.get(sexoIndex);
+        String sexoField = getSelectValue(driver, sexoSelect);
+        String birthdateField = getInputValue(driver, birthdateInput);
+        String bithdateFormatted = convertDateFormat(birthdateField, "yyyy-MM-dd", "dd/MM/yyyy");
+
+        return name.equals(nameField) && sexoValue.equals(sexoField) && birthdate.equals(bithdateFormatted);
     }
 }
