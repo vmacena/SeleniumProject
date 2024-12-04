@@ -10,12 +10,14 @@ import org.tc1.pages.SignInPage;
 import org.tc1.setup.SetupTest;
 import org.tc1.utils.Utils;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
 public class ProfileTest extends SetupTest {
     private static Stream<Arguments> provideProfileData() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         return Stream.of(
                 Arguments.of(
@@ -23,6 +25,12 @@ public class ProfileTest extends SetupTest {
                         faker.number().numberBetween(1, 2),
                         LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                         false
+                ),
+                Arguments.of(
+                        faker.name().firstName(),
+                        faker.number().numberBetween(1, 2),
+                        dateFormat.format(faker.date().birthday(18, 60)),
+                        true
                 )
         );
     }
