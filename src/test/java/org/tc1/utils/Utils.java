@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class Utils {
     public static WebElement waitForVisibility(WebDriver driver, By locator, int timeoutInSeconds) {
@@ -67,5 +70,33 @@ public class Utils {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static void refreshScreen(WebDriver driver) {
+        driver.navigate().refresh();
+    }
+
+    public static List<String> getSelecteOptions(WebDriver driver, By locator) {
+        WebElement selectElement = driver.findElement(locator);
+        Select select = new Select(selectElement);
+        return select.getOptions().stream().map(WebElement::getText).toList();
+    }
+
+    public static String getInputValue(WebDriver driver, By locator) {
+        WebElement inputField = waitForVisibility(driver, locator, 2);
+        return inputField.getAttribute("value");
+    }
+
+    public static String getSelectValue(WebDriver driver, By locator) {
+        WebElement selectElement = driver.findElement(locator);
+        Select select = new Select(selectElement);
+        return select.getFirstSelectedOption().getText();
+    }
+
+    public static String convertDateFormat(String date, String fromFormat, String toFormat) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern(fromFormat);
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(toFormat);
+        LocalDate localDate = LocalDate.parse(date, inputFormatter);
+        return localDate.format(outputFormatter);
     }
 }
