@@ -25,7 +25,7 @@ public class SignInTest extends SetupTest {
 
     @Test
     @DisplayName("Should work if you fail to login more than once")
-    public void testMultipleLoginFailures() throws InterruptedException {
+    public void testMultipleLoginFailures() {
         SignInPage signInPage = new SignInPage(driver);
 
         signInPage.clickLogInModalButton();
@@ -35,8 +35,6 @@ public class SignInTest extends SetupTest {
         signInPage.fillForm(faker.internet().emailAddress(), faker.rockBand().name() + faker.number().digits(3));
         signInPage.submitForm();
         
-        Thread.sleep(5000);
-
         assertTrue(signInPage.verifyModalIsDisplayed());
     }
 }
