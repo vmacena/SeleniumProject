@@ -1,6 +1,7 @@
 package org.tc1.utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -46,5 +47,25 @@ public class Utils {
         WebElement element = waitForVisibility(driver, locator, 10);
         element.clear();
         element.sendKeys(keys);
+    }
+
+    public static boolean waitForFieldToBeEditable(WebDriver driver, By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+
+        try {
+            wait.until(ExpectedConditions.not(ExpectedConditions.attributeToBe(locator, "readonly", "true")));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public static boolean verifyIsDisplayed(WebDriver driver, By locator, int timeoutInSeconds) {
+        try {
+            WebElement modal = waitForVisibility(driver, locator, timeoutInSeconds);
+            return modal.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
