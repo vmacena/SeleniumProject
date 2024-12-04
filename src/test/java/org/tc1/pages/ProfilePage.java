@@ -33,10 +33,10 @@ public class ProfilePage {
         return getText(driver, nameUser);
     }
 
-    public void fillForm(String name, int sexoIndex, String birthdate) {
-        fillInput(driver, nameInput, name);
-        selectByIndex(driver, sexoSelect, sexoIndex);
-        fillInput(driver, birthdateInput, birthdate);
+    public void fillForm(String name, Integer sexoIndex, String birthdate) {
+        if(name != null) fillInput(driver, nameInput, name);
+        if(sexoIndex != null) selectByIndex(driver, sexoSelect, sexoIndex);
+        if(birthdate != null) fillInput(driver, birthdateInput, birthdate);
     }
 
     public void submitForm() {
@@ -47,10 +47,15 @@ public class ProfilePage {
         clickElement(driver, restoreButton);
     }
 
-    public boolean compareFields(String name, int sexoIndex, String birthdate) {
+    public boolean compareFields(String name, Integer sexoIndex, String birthdate) {
         String nameField = getInputValue(driver, nameInput);
-        List<String> sexoOptions = getSelecteOptions(driver, sexoSelect);
-        String sexoValue = sexoOptions.get(sexoIndex);
+
+        List<String> sexoOptions;
+        String sexoValue = null;
+        if(sexoIndex != null) {
+            sexoOptions = getSelecteOptions(driver, sexoSelect);
+            sexoValue = sexoOptions.get(sexoIndex);
+        }
         String sexoField = getSelectValue(driver, sexoSelect);
         String birthdateField = getInputValue(driver, birthdateInput);
         String bithdateFormatted = convertDateFormat(birthdateField, "yyyy-MM-dd", "dd/MM/yyyy");

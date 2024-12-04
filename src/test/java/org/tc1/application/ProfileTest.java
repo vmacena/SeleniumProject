@@ -31,6 +31,12 @@ public class ProfileTest extends SetupTest {
                         faker.number().numberBetween(1, 2),
                         dateFormat.format(faker.date().birthday(18, 60)),
                         true
+                ),
+                Arguments.of(
+                        "",
+                        null,
+                        null,
+                        false
                 )
         );
     }
@@ -38,7 +44,7 @@ public class ProfileTest extends SetupTest {
     @ParameterizedTest
     @MethodSource("provideProfileData")
     @DisplayName("Validate Profile")
-    public void testSignUp(String name, int sexoIndex, String birthDate, boolean expected) {
+    public void testSignUp(String name, Integer sexoIndex, String birthDate, boolean expected) {
         ProfilePage profilePage = new ProfilePage(driver);
         SignInPage signInPage = new SignInPage(driver);
 
