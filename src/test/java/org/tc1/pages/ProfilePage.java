@@ -63,7 +63,7 @@ public class ProfilePage {
         try{
             birthdateFormatted = convertDateFormat(birthdateField, "yyyy-MM-dd", "dd/MM/yyyy");
         } catch (Exception e) {
-            return true;
+            birthdateFormatted = "";
         }
 
         return (Objects.equals(name, nameField) || name == null) &&

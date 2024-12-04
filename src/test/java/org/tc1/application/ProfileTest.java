@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.tc1.pages.ProfilePage;
 import org.tc1.pages.SignInPage;
+import org.tc1.pages.SignUpPage;
 import org.tc1.setup.SetupTest;
 import org.tc1.utils.Utils;
 
@@ -77,6 +78,45 @@ public class ProfileTest extends SetupTest {
         Utils.refreshScreen(driver);
         profilePage.clickUserButton();
 
+        Assert.assertEquals(expected, profilePage.compareFields(name, sexoIndex, birthDate));
+    }
+
+    private static Stream<Arguments> provideConsistentProfileData() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        return Stream.of(
+                Arguments.of(
+                        faker.name().firstName(),
+                        faker.internet().emailAddress(),
+                        faker.number().numberBetween(1, 2),
+                        dateFormat.format(faker.date().birthday(18, 60)),
+                        1,
+                        String.valueOf(faker.number().numberBetween(10000, 999999)),
+                        faker.number().numberBetween(1, 3),
+                        "123",
+                        "123",
+                        true
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideConsistentProfileData")
+    @DisplayName("Validate Profile")
+    public void testConsistenceProfile(String name, String email, int sexoIndex, String birthDate, int typeIndex, String cri, int specialityIndex, String password, String confirmPassword, boolean expected) throws InterruptedException {
+        SignUpPage signUpPage = new SignUpPage(driver);
+        ProfilePage profilePage = new ProfilePage(driver);
+        SignInPage signInPage = new SignInPage(driver);
+
+        signUpPage.clickSignUpButton();
+        signUpPage.fillForm(name, email, sexoIndex, birthDate, typeIndex, cri, specialityIndex, password, confirmPassword);
+        signUpPage.submitForm();
+
+        signInPage.clickLogInModalButton();
+        signInPage.fillForm(email, password);
+        signInPage.submitForm();
+
+        profilePage.clickUserButton();
         Assert.assertEquals(expected, profilePage.compareFields(name, sexoIndex, birthDate));
     }
 }
