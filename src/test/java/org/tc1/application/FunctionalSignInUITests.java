@@ -52,4 +52,11 @@ public class FunctionalSignInUITests extends SetupTest {
         assertTrue(driver.findElement(emailInput).isDisplayed(),
                 "The email field is not visible.");
     }
+
+    @Test
+    @DisplayName("Verify Password Input Visibility")
+    public void testPasswordInputVisibility() {
+        assertTrue(driver.findElement(passwordInput).isDisplayed(),
+                "The password field is not visible.");
+    }
 }
