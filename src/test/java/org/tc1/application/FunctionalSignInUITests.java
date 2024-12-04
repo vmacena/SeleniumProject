@@ -45,4 +45,11 @@ public class FunctionalSignInUITests extends SetupTest {
         assertTrue(driver.findElement(loginModalButton).isDisplayed(),
                 "The login modal button is not visible.");
     }
+
+    @Test
+    @DisplayName("Verify Email Input Visibility")
+    public void testEmailInputVisibility() {
+        assertTrue(driver.findElement(emailInput).isDisplayed(),
+                "The email field is not visible.");
+    }
 }
