@@ -102,6 +102,20 @@ public class SignInTest extends SetupTest {
                         email1,
                         password1,
                         true
+                ),
+                Arguments.of(
+                        faker.name().firstName(),
+                        faker.internet().emailAddress(),
+                        faker.number().numberBetween(1, 2),
+                        dateFormat.format(faker.date().birthday(18, 60)),
+                        1,
+                        String.valueOf(faker.number().numberBetween(10000, 999999)),
+                        faker.number().numberBetween(1, 3),
+                        password1,
+                        password1,
+                        faker.internet().emailAddress(),
+                        password1,
+                        false
                 )
         );
     }

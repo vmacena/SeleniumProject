@@ -9,7 +9,7 @@ import org.tc1.utils.Utils;
 import java.time.Duration;
 
 public class SignInPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public SignInPage(WebDriver driver) {
         this.driver = driver;
