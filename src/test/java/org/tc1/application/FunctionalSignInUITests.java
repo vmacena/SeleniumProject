@@ -38,4 +38,11 @@ public class FunctionalSignInUITests extends SetupTest {
         assertTrue(driver.findElement(loginButton).isDisplayed(),
                 "The login button is not visible.");
     }
+
+    @Test
+    @DisplayName("Verify Login Modal Button Visibility")
+    public void testLoginModalButtonVisibility() {
+        assertTrue(driver.findElement(loginModalButton).isDisplayed(),
+                "The login modal button is not visible.");
+    }
 }
