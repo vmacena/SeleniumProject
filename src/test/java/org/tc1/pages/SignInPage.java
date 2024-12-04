@@ -12,6 +12,7 @@ public class SignInPage {
     }
 
     private final By loginModalButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[1]");
+    private final By loginModal = By.xpath("//*[@id=\"root\"]/div/div/nav/div[3]/div");
     private final By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
     private final By passwordInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
     private final By loginButton = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/div/button[2]");
@@ -28,9 +29,14 @@ public class SignInPage {
 
     public void submitForm() {
         Utils.clickElement(driver, loginButton);
+        Utils.waitForClickability(driver, loginButton, 4);
     }
 
     public void cancelForm() {
         Utils.clickElement(driver, cancelButton);
+    }
+
+    public boolean verifyModalIsDisplayed() {
+        return Utils.verifyIsDisplayed(driver, loginModal, 2);
     }
 }
