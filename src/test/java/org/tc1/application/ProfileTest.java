@@ -37,6 +37,12 @@ public class ProfileTest extends SetupTest {
                         null,
                         null,
                         false
+                ),
+                Arguments.of(
+                        " ",
+                        null,
+                        null,
+                        false
                 )
         );
     }
