@@ -11,6 +11,7 @@ public class SignUpPage {
         this.driver = driver;
     }
 
+    private By formModal = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div");
     private By signupButton = By.xpath("//*[@id=\"root\"]/div/nav/div[2]/button[2]");
     private By nameInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[1]/input");
     private By emailInput = By.xpath("//*[@id=\"root\"]/div/nav/div[3]/div/form/label[2]/input");
@@ -49,5 +50,12 @@ public class SignUpPage {
 
     public void cancelForm() {
         Utils.clickElement(driver, cancelButton);
+    }
+
+    public boolean verifyModalIsDisplayed() {
+        Utils.waitForFieldToBeEditable(driver, submitButton, 2);
+        boolean formModalIsVisible = Utils.verifyIsDisplayed(driver, formModal, 2);
+
+        return formModalIsVisible;
     }
 }
