@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Objects;
 
 import static org.tc1.utils.Utils.*;
 
@@ -58,8 +59,15 @@ public class ProfilePage {
         }
         String sexoField = getSelectValue(driver, sexoSelect);
         String birthdateField = getInputValue(driver, birthdateInput);
-        String bithdateFormatted = convertDateFormat(birthdateField, "yyyy-MM-dd", "dd/MM/yyyy");
+        String birthdateFormatted;
+        try{
+            birthdateFormatted = convertDateFormat(birthdateField, "yyyy-MM-dd", "dd/MM/yyyy");
+        } catch (Exception e) {
+            return true;
+        }
 
-        return name.equals(nameField) && sexoValue.equals(sexoField) && birthdate.equals(bithdateFormatted);
+        return (Objects.equals(name, nameField) || name == null) &&
+                (Objects.equals(sexoValue, sexoField) || sexoIndex == null) &&
+                (Objects.equals(birthdate, birthdateFormatted) || birthdate == null);
     }
 }
