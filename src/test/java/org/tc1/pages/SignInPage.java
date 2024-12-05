@@ -33,6 +33,7 @@ public class SignInPage {
 
     public void submitForm() {
         Utils.clickElement(driver, loginButton);
+        Utils.waitForFieldToBeEditable(driver, loginButton, 3);
     }
 
     public void cancelForm() {

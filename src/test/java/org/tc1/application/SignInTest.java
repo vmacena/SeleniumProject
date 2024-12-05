@@ -28,7 +28,10 @@ public class SignInTest extends SetupTest {
     @DisplayName("Should not allow an unregistered user to login and then allow closing the modal")
     public void testLoginFailure(){
         signInPage.clickLogInModalButton();
-        signInPage.fillForm(faker.internet().emailAddress(), faker.rockBand().name() + faker.number().digits(3));
+        signInPage.fillForm(
+                faker.internet().emailAddress(),
+                faker.rockBand().name() + faker.number().digits(3
+                ));
         signInPage.submitForm();
         signInPage.cancelForm();
         
