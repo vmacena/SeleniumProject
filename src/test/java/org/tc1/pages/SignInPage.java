@@ -33,6 +33,7 @@ public class SignInPage {
 
     public void submitForm() {
         Utils.clickElement(driver, loginButton);
+        Utils.waitForFieldToBeEditable(driver, loginButton, 3);
     }
 
     public void cancelForm() {
@@ -41,7 +42,7 @@ public class SignInPage {
 
     public boolean verifyModalIsDisplayed() {
         Utils.waitForFieldToBeEditable(driver, loginButton, 3);
-        
+
         return Utils.verifyIsDisplayed(driver, loginModal, 2);
     }
 
@@ -53,5 +54,29 @@ public class SignInPage {
         } catch (Exception ignored) {
             return false;
         }
+    }
+
+    public String getPageTitle(){
+        return driver.getTitle();
+    }
+
+    public boolean checkIfLoginButtonIsDisplayed(){
+        return driver.findElement(loginButton).isDisplayed();
+    }
+
+    public boolean checkIfLoginModalButtonIsDisplayed(){
+        return driver.findElement(loginModalButton).isDisplayed();
+    }
+
+    public boolean checkIfEmailInputIsDisplayed(){
+        return driver.findElement(emailInput).isDisplayed();
+    }
+
+    public boolean checkIfPasswordInputIsDisplayed(){
+        return driver.findElement(passwordInput).isDisplayed();
+    }
+
+    public boolean checkIfCancelButtonIsDisplayed(){
+        return driver.findElement(cancelButton).isDisplayed();
     }
 }
